@@ -17,7 +17,7 @@ const config: ZudokuConfig = {
   redirects: [{ from: "/", to: "/docs/introduction" }],
   apis: {
     type: "file",
-    input: "./apis/openapi.yaml",
+    input: "./apis/openapi.json",
     navigationId: "api",
   },
   docs: {
