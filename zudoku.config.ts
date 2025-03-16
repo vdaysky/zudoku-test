@@ -4,17 +4,18 @@ const config: ZudokuConfig = {
   topNavigation: [
     { id: "docs", label: "Documentation" },
     { id: "api", label: "API Reference" },
+    { id: "about", label: "About" },
   ],
   sidebar: {
     docs: [
       {
         type: "category",
         label: "Overview",
-        items: ["introduction", "example"],
+        items: ["about", "authorization", "installation"],
       },
     ],
   },
-  redirects: [{ from: "/", to: "/docs/introduction" }],
+  redirects: [{ from: "/", to: "/about" }],
   apis: {
     type: "file",
     input: "./apis/openapi.json",

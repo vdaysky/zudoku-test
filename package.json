@@ -2,12 +2,14 @@
   "name": "my-app",
   "version": "0.1.0",
   "type": "module",
-  "private": true,
+  "private": false,
+  "homepage": "https://vdaysky.github.io/zudoku-test",
   "scripts": {
     "dev": "zudoku dev",
     "build": "zudoku build",
     "preview": "zudoku preview",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": ">=19.0.0",
@@ -15,9 +17,10 @@
     "zudoku": "0.34.4"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^22",
     "@types/react": "^19",
-    "@types/react-dom": "^19"
+    "@types/react-dom": "^19",
+    "gh-pages": "^6.3.0",
+    "typescript": "^5"
   }
 }
