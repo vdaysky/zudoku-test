@@ -13,9 +13,6 @@
 # testing
 /coverage
 
-# zudoku
-/dist/
-
 # misc
 .DS_Store
 *.pem
