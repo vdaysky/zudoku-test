@@ -3,5 +3,22 @@
   "framework": {
     "version": "0.34.4"
   },
-  "routes": []
+  "routes": [
+    {
+      "src": "/zudoku-test/api",
+      "dest": "/zudoku-test/api/~endpoints",
+      "status": 301,
+      "headers": {
+        "Location": "/zudoku-test/api/~endpoints"
+      }
+    },
+    {
+      "src": "/zudoku-test",
+      "dest": "/zudoku-test/about",
+      "status": 301,
+      "headers": {
+        "Location": "/zudoku-test/about"
+      }
+    }
+  ]
 }
