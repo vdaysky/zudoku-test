@@ -24,6 +24,7 @@ const config: ZudokuConfig = {
   docs: {
     files: "/pages/**/*.{md,mdx}",
   },
+  basePath: "zudoku-test"
 };
 
 export default config;
