@@ -1,0 +1,72 @@
+# Software Requirements Specification (SRS)
+
+## 1. Introduction
+
+### 1.1 Purpose
+The purpose of this document is to define the functional and non-functional requirements for the **Hardware Secret Manager** — a secure, microcontroller-based device for managing sensitive data (secrets), with strict access and transaction verification mechanisms.
+
+### 1.2 Scope
+The Hardware Secret Manager provides secure storage for secrets (e.g., passwords, tokens, cryptographic keys) on a microcontroller. It encrypts stored data, communicates with a host device via USB, and enforces two-factor authentication (PIN + key card) for all access and operations.
+
+## 2. Overall Description
+
+### 2.1 Product Perspective
+The system is a standalone hardware device that acts as a secure vault for secrets. It connects to a host device (PC, server, etc.) over USB and is recognized via a custom USB protocol.
+
+### 2.2 Product Functions
+- Securely store, retrieve, and delete secrets.
+- Authenticate user access via PIN and key card.
+- Encrypt all memory contents on-device.
+- Require key card for each sensitive transaction.
+- Communicate securely with host via USB.
+
+### 2.3 User Characteristics
+Users are expected to have basic understanding of hardware devices and security practices. Admin-level users should understand secure initialization and management procedures.
+
+## 3. Functional Requirements
+
+### 3.1 Secure Secret Storage
+- Secrets are stored in the microcontroller's internal or connected memory.
+- All secrets must be encrypted using a secure, hardware-supported encryption algorithm (e.g., AES-256).
+
+### 3.2 Authentication and Unlocking
+- The device remains locked until a valid PIN and key card are presented.
+- Unlock state is maintained only in volatile memory (reset on power loss).
+
+### 3.3 Transaction Verification
+- Every sensitive operation (read/write/delete secret) must be confirmed with a key card.
+- The key card communicates with the device via a secure protocol (e.g., NFC, physical contact).
+
+### 3.4 USB Communication
+- The device communicates with the host through USB.
+- A custom or HID-like protocol will be used for command and data exchange.
+- All communication should be authenticated and optionally encrypted.
+
+## 4. Non-functional Requirements
+
+### 4.1 Security
+- Memory encryption is mandatory and must use hardware cryptographic support.
+- PIN and key card data must never be stored unencrypted.
+- Device must self-lock after a defined number of failed attempts.
+
+### 4.2 Performance
+- The device should unlock and respond to commands within 1 second.
+- Read/write operations should complete in under 500 ms for typical secret sizes (&lt;1 KB).
+
+### 4.3 Reliability
+- The device must ensure secrets are not corrupted under power loss.
+- Wear-leveling or similar techniques should be considered if flash memory is used.
+
+### 4.4 Usability
+- Feedback should be provided via LED indicators or host messages.
+- User errors (e.g., wrong PIN, missing key card) should return informative status codes.
+
+## 5. External Interfaces
+
+### 5.1 USB Interface
+- Connects to host devices via USB 2.0 or higher.
+- Uses a defined command set for operations (e.g., `LOCK`, `UNLOCK`, `READ_SECRET`, `WRITE_SECRET`, `DELETE_SECRET`).
+
+### 5.2 Key Card Interface
+- Supports external key card (e.g., via NFC or dedicated slot).
+- Verifies key card authenticity before allowing operations.

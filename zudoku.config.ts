@@ -11,7 +11,7 @@ const config: ZudokuConfig = {
       {
         type: "category",
         label: "Overview",
-        items: ["about", "authorization", "installation"],
+        items: ["about", "authorization", "installation", "srs"],
       },
     ],
   },
